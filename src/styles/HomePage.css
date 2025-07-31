@@ -1,0 +1,1204 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap'); */
+  /* body {
+  margin: 0;
+  padding: 0;
+  background-color:   rgb(21, 20, 12);
+  font-family: monospace;
+  color: lightgray;
+  min-height: 100vh;
+  overflow-x: hidden; 
+  overflow-y: auto;
+  width: 100%;
+  
+  
+  
+} */
+
+/* HomePage.css */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: none; /* Xóa background body nếu không cần */
+  overflow-x: hidden;
+}
+
+
+.signin {
+  position: fixed;
+  top: 0.5px;
+  right: 100px;
+  padding: 7px 15px;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 13px;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: #fff;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  z-index: 999;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: linear-gradient(to top, rgba(255, 215, 0, 0.25), rgba(255, 255, 255, 0.05));
+  box-shadow: 0 6px 16px rgba(255, 215, 0, 0.2), 0 4px 30px rgba(0, 0, 0, 0.25);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+}
+
+/* Ánh vàng từ dưới lên */
+.signin::before {
+  content: "";
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 300%;
+  background: linear-gradient(to top, rgba(195, 171, 33, 0.4), transparent);
+  animation: goldGlow 3s infinite ease-in-out;
+  z-index: -1;
+}
+
+/* Viền xanh biển blink blink */
+.signin::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  border-radius: 14px;
+  background: linear-gradient(45deg, #1b5155, #144e7c, #40858a);
+  background-size: 400% 400%;
+  animation: borderBlink 4s ease infinite;
+  z-index: -2;
+  pointer-events: none;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+@keyframes goldGlow {
+  0% {
+    bottom: -100%;
+    opacity: 0;
+  }
+  50% {
+    bottom: 0%;
+    opacity: 1;
+  }
+  100% {
+    bottom: -100%;
+    opacity: 0;
+  }
+}
+
+@keyframes borderBlink {
+  0% {
+    background-position: 0% 50%;
+    filter: brightness(1);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: brightness(1.6);
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: brightness(1);
+  }
+}
+
+.signin:hover {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4), 0 8px 36px rgba(0, 0, 0, 0.35);
+}
+
+.container{
+  display: flex;  /* Thay đổi từ fixed thành flex */
+  flex-direction: column;
+  
+  position: relative;
+  /* overflow-x: hidden; */
+  margin: 0;
+  padding: 0;
+  /* align-items: center;
+  justify-content: center; Căn giữa nội dung */
+   background: #000000; /* Màu nền đen */;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+  color: lightgray;
+  min-height: 100vh;
+  /* overflow-x: hidden;  */
+  overflow-y: auto;
+  width: 100%;
+  
+}
+
+/* header{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  border:0.5px solid rgb(218, 165, 32);
+  z-index: 999 ;
+  
+} */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+   background: rgba(21, 19, 12, 0.6); /* Làm mờ background */
+   backdrop-filter: blur(8px); /* Làm mờ background */
+  z-index: 1001;
+
+ 
+}
+
+/* Thêm border dưới có hiệu ứng phát sáng */
+header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+      90deg,
+      transparent,
+      #ffd700,
+      #ff8c00,
+      #ffd700,
+      transparent
+  );
+  animation: borderLight 2s infinite;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+@keyframes borderLight {
+  0%, 100% {
+      opacity: 0.5;
+      box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+  }
+  50% {
+      opacity: 1;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+  }
+}
+
+.head-left{
+  display: flex;
+  align-items: center;
+}
+
+.head-left img{
+  height: 60px;
+  margin-right: 15px;
+  margin-left: 20px;
+}
+
+header ul{
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+  gap: 50px;
+}
+
+header ul li{
+  list-style: none;
+}
+
+header a{
+  text-decoration: none;
+  color:gray;
+  font-weight: 900;
+  font-size: 16px;
+  transition: 0.3s;
+  font-family: monospace  ; 
+}
+
+header a:hover {
+  color: white;
+  background: rgba(0, 0, 0, 0.2);  /* Giảm opacity của background */
+  /* border: 1px solid rgba(0, 207, 255, 0.3);  Border màu xanh mờ */
+  padding: 6px 16px;
+  font-size: 14px;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 0 15px rgba(0, 207, 255, 0.3);  /* Thêm glow effect */
+}
+
+header a:hover::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: radial-gradient(
+      circle at center,
+      rgba(0, 207, 255, 0.8) 0%,
+      rgba(0, 207, 255, 0.4) 50%,
+      transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  filter: blur(3px);  /* Thêm blur cho gradient */
+  z-index: -1;
+}
+
+header a:hover:hover::before {
+  opacity: 1;
+}
+
+header a:hover::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: radial-gradient(circle at center, #00cfff 40%, transparent 80%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+header a:hover:hover::before {
+  opacity: 1;
+}
+.head-right{
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1001;
+}
+
+
+.button-box{
+  position: relative;
+  width: 100px;
+  height: 45px;
+  margin-left: 25px;
+  background: linear-gradient(to right, 
+      #00aaa7,
+      #7f42a7,   
+      #6600c5,    
+      #1f2b9c,
+      #2a45ff,    
+      #00aaa7
+);
+
+  border-radius: 10px;
+  background-size: 200%;
+  animation: animationGradient 2.5s linear infinite;
+  clip-path: polygon(0 0, 82% 0, 100% 34%, 100% 80%, 100% 99%, 0 100%, 0% 80%, 0% 20%)  ;
+}
+
+
+.button-box a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.button-box button {
+  position: absolute;
+  inset: 3px;
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  border: none;
+  background-color: rgb(14 12 21);
+  color: lightgray;
+  border-radius: 8px;
+  clip-path: polygon(0 0, 82% 0, 100% 34%, 100% 80%, 100% 99%, 0 100%, 0% 80%, 0% 20%);
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 16px;
+}
+
+/* cái nút sign in chuyển động  */
+@keyframes animationGradient{
+  to{
+      background-position: 200%;
+  }
+}
+/* @font-face {
+  font-family: 'monospace';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('monospace'), url(https://fonts.gstatic.com/s/robotomono/v13/L0x5DF4xlVMF-BfR8bXMIjhLq38.woff2) format('woff2');
+} */
+.head-right button{
+  position: absolute;
+  inset: 3px 3px 3px 3px;
+  border: none;
+  background-color: rgb(14 12 21);
+  color: lightgray;
+  border-radius: 10px;
+  clip-path: polygon(0 0, 82% 0, 100% 34%, 100% 80%, 100% 99%, 0 100%, 0% 80%, 0% 20%)  ;
+  /* //https://bennettfeely.com/clippy/ */
+  cursor: pointer;
+  transition:0.3s;
+  font-family: monospace;
+  font-size: 15px;
+}
+
+.head-right button:hover{
+  color: #00e1ff;  /* Màu xanh sáng khi hover */
+  text-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
+  box-shadow: 0 0 20px rgba(0, 195, 255, 0.5);}
+
+.background{
+  position:relative;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 150vh ;
+  overflow: hidden;
+  display:flex ;
+  flex-direction: column;
+  align-items: flex-start; /* Căn trái nội dung */
+  padding: 0;    /* Reset padding */
+  margin: 0;  
+}
+
+.homepage-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;  /* Thêm height 100% */
+  top: 0;
+  left: 0;  /* Thêm left 0 */
+  object-fit: cover;
+  object-position: center;  /* Thêm object-position */
+  transform: scale(1.0); 
+}
+
+.homepage-background-effect{
+  position: absolute;
+  width: 90%;
+  top: 15%;   
+  
+  opacity: 0.5;
+  filter: blur(8px);
+}
+
+.background h1{
+  position: absolute;
+  top:15%;
+ 
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 45px;
+  max-width: 650px;
+  /* text-align: center; */
+  color: white;
+ opacity: 1;
+  padding-left: 60px;
+  z-index: 2;
+  font-weight: 700;
+  text-align: left;
+}
+
+.background h3{
+  position: absolute;
+  top: 35%;
+  font-size: 17px;
+  max-width: 650px;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-align: left;
+  color: rgb(142, 141, 141);
+  font-weight: 500;
+  padding-left: 60px;
+  opacity: 1;
+  z-index: 2;
+}
+
+body:has(.overlay) .background h1,
+body:has(.overlay) .background h3,
+body:has(.overlay) .background button {
+  opacity: 0;
+}
+
+.background button{
+  position: relative;
+  top: 48%;
+  left: 200px;    
+  width: 180px;
+  height: 80px;
+  background: linear-gradient(to right, #ffffff, #f8f8f8);
+  color: #333;
+  font-family: monospace;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  clip-path: polygon(0 0, 82% 0, 100% 34%, 100% 80%, 100% 99%, 0 100%, 0% 80%, 0% 20%);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.background button:hover {
+  transform: translateY(-3px) scale(1.02);
+  color: #003399;
+  background: linear-gradient(120deg, #ffffff, #e6f7ff);
+  
+  box-shadow:  0 8px 25px rgba(0, 51, 153, 0.3),
+  0 0 20px rgba(0, 51, 153, 0.2);
+  text-shadow: 0 0 8px rgba(0, 51,153, 0.4);
+}
+
+/* Thêm hiệu ứng shine */
+.background button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(0, 51, 153, 0.15),
+      transparent
+  );
+  transition: 0.6s;
+}
+
+.background button:hover::before {
+  left: 100%;
+}
+
+/* Thêm hiệu ứng glow border */
+.background button::after {
+  display: none;
+}
+
+.background button:hover::after {
+  opacity: 1;
+}
+
+/* .intro-dragon {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 999;
+  transition: all 1s ease;
+  pointer-events: none;
+}
+
+.intro-dragon img {
+  width: 400px;
+  max-width: 90vw;
+  opacity: 1;
+}
+
+.intro-dragon.scrolled {
+  top: 30px;
+  left: 30px;
+  transform: translate(0, 0) scale(0.2);
+  opacity: 0.7;
+}
+ */
+
+ .fade-in-text {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+.fade-in-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delay cho từng phần tử */
+.delay-1 {
+  transition-delay: 0.1s;
+}
+
+.delay-2 {
+  transition-delay: 0.1s;
+}
+
+.parallax{
+  transition: transform 1s linear;
+}
+
+
+
+/*Sign-in*/
+.signin-page-box {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto; /* Thay đổi height thành auto */
+  padding: 20px;
+  top: 55%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  margin-bottom: 20px;
+  background: linear-gradient(180deg, 
+    rgba(0, 115, 255, 0.15),
+    rgba(255, 215, 0, 0.15)
+  );
+  backdrop-filter: blur(20px);
+ 
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  box-shadow: 
+    0 0 30px rgba(0, 153, 255, 0.2),
+    0 0 60px rgba(255, 215, 0, 0.1);
+    animation: formSlideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transform-origin: center center;
+  opacity: 0;
+  background-blend-mode: overlay;
+  background-image: url('/public/images/sign-in-sign-up-box.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+}
+
+
+.signin-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Thêm justify-content */
+  gap: 12px;
+  height: 100%;
+  
+  font-size: small;
+  color: #eaeaea;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.signin-page h1 {
+  color: #fff;
+  font-size: 30px;
+  margin-bottom: 30px;
+  margin-top: 40px;
+  text-align: center;
+  
+
+}
+
+.signin-page input {
+  width: 90%;
+  padding: 15px;
+  margin: 8px 0;
+  border: none;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.788);
+  color: #fff;
+  font-size: small;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.signin-page input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 15px rgba(218, 165, 32, 0.2);
+}
+
+.signin-page button {
+  width: 200px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding: 12px 30px;
+  margin:20px 0;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(to bottom,
+    #DAA520,     /* Golden yellow */
+    #B8860B 50%, /* Dark golden */
+    #8B6508      /* Deep golden brown */
+  );
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    inset 0 0 15px rgba(255, 255, 255, 0.2),
+    0 0 10px rgba(218, 165, 32, 0.3);
+  }
+
+.signin-page button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(to bottom,
+    rgba(140, 122, 0, 0.95),
+    rgba(102, 87, 0, 0.95)
+  );
+  box-shadow: 
+    inset 0 0 25px rgba(255, 255, 255, 0.2),
+    0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+/* Bỏ hiệu ứng shine */
+.signin-page button::before {
+  display: none;
+}
+.signin-page a {
+  color: #9b7b23;
+  text-decoration: none;
+  font-size: 14px;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+}
+
+.signin-page a:hover {
+  color: #ffd700;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+/*Sign-up*/
+.signup-page-box {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto; /* Thay đổi height thành auto */
+  padding: 20px;
+  top: 55%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  margin-bottom: 10px;
+  background: linear-gradient(180deg, 
+    rgba(0, 115, 255, 0.15),
+    rgba(255, 215, 0, 0.15)
+  );
+  backdrop-filter: blur(20px);
+  
+  
+  
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  z-index: 1000;
+  box-shadow: 
+    0 0 30px rgba(0, 153, 255, 0.2),
+    0 0 60px rgba(255, 215, 0, 0.1);
+    animation: formSlideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transform-origin: center center;
+    opacity: 0;
+    background-image: url('/public/images/sign-in-sign-up-box.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+
+}
+
+@keyframes formSlideIn {
+  0% {
+    opacity: 0;
+    transform: translate(-200%, -50%) rotate(-15deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(-45%, -50%) rotate(5deg);
+  }
+  80% {
+    transform: translate(-52%, -50%) rotate(-2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(0);
+  }
+}
+.signup-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Thêm justify-content */
+  gap: 10px;
+  height: 90%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: small;
+  color: #eaeaea;
+}
+
+.signup-page h1 {
+  color: #fff;
+  font-size: 30px;
+  margin-bottom: 30px;
+  margin-top: 40px;
+  text-align: center;
+
+}
+
+.signup-page input {
+  width: 90%;
+  padding: 15px;
+  margin: 8px 0;
+  border: none;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.788);
+  color: #fff;
+  font-size: small;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.signup-page input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 15px rgba(218, 165, 32, 0.2);
+}
+
+.signup-page button {
+  width: 200px;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding: 12px 30px;
+  margin:20px 0;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(to bottom,
+    #DAA520,     /* Golden yellow */
+    #B8860B 50%, /* Dark golden */
+    #8B6508      /* Deep golden brown */
+  );
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    inset 0 0 15px rgba(255, 255, 255, 0.2),
+    0 0 10px rgba(218, 165, 32, 0.3);
+  }
+
+.signup-page button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(to bottom,
+    rgba(140, 122, 0, 0.95),
+    rgba(102, 87, 0, 0.95)
+  );
+  box-shadow: 
+    inset 0 0 25px rgba(255, 255, 255, 0.2),
+    0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+/* Bỏ hiệu ứng shine */
+.signup-page button::before {
+  display: none;
+}
+.signup-page a {
+  color: #9b7b23;
+  text-decoration: none;
+  font-size: 14px;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+}
+
+.signup-page a:hover {
+  color: #ffd700;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+/* Thêm styles cho overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Giảm opacity xuống 0.5 */
+  z-index: 999;
+  animation: overlayFadeIn 0.3s ease forwards;
+}
+
+@keyframes overlayFadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+
+.background {
+  transition: all 0.05s ease;
+}
+
+
+/* .signin-page-box::before,
+.signup-page-box::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  padding: 40px;
+  height: 280px;
+  background-image: url('/public/images/sign-in-sign-up-box.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translate(-50%, -50%);
+  opacity: 0.8;
+  z-index: 0;
+
+} */
+
+/*FEATURE*/
+.tinh-nang-chinh{
+  position: relative;
+  top:-180px;
+  padding: 50px 0;
+  width: 21.5%;
+  left:25px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(0, 0, 0);
+}
+
+
+
+
+.feature{
+  position: relative;
+  background-image: url('/public/images/background-feature.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: -250px;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(0, 0, 0);
+}
+
+@media (max-width: 700px) {
+  .feature {
+    background-position: center -30px;
+  }
+}
+
+
+
+
+
+
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 0 50px;
+  margin-top:0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif  ;
+  font-size: 20px;
+  margin-left: 3%;
+}
+
+.feature-card {
+  position: relative;
+  padding: 30px;
+  border: 1px solid rgba(218, 165, 32, 0.3);
+  border-radius: 15px;
+  background: linear-gradient(
+    145deg,
+    rgba(0, 0, 0, 0.95),
+    rgba(21, 20, 12, 0.98)
+  );
+  transition: all 0.3s ease;
+  width: 90%;
+  height: auto;
+  overflow: hidden;
+}
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 0;
+  filter: brightness(0.2); /* Remove blur, just make it darker */
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(218, 165, 32, 0.1);
+}
+.feature-card:hover::before {
+  opacity: 1;
+   transform: translateY(-5px);
+   transform: scale(1.1);
+  box-shadow: 
+    0 10px 30px rgba(218, 165, 32, 0.1),
+    0 0 50px rgba(218, 165, 32, 0.05);
+  border-color: rgba(218, 165, 32, 0.5);
+}
+
+.feature-card h3 {
+  color: #DAA520;
+  font-size: 29px;
+  margin-bottom: 35px;
+  position: relative;
+  z-index: 1;
+  margin-top: 20px;
+  text-align: center;
+  align-items: center;
+  justify-self: center  ;
+}
+
+.feature-card p {
+  color: #999;
+  font-size: 17px;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+  text-align: justify; /* Add this line */
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+}
+
+
+/* Individual card backgrounds */
+.feature-card:nth-child(1)::before {
+  background-image: url('/public/images/time-travel.png');
+}
+
+.feature-card:nth-child(2)::before {
+  background-image: url('/public/images/minigame.png');
+}
+
+ .feature-card:nth-child(3)::before {
+  background-image: url('/public/images/museum.png');
+}
+
+.feature-card:nth-child(4)::before {
+  background-image: url('/public/images/education.png');
+}
+
+.feature-card:nth-child(5)::before {
+  background-image: url('/public/images/character.png');
+}
+
+.feature-card:nth-child(6)::before {
+  background-image: url('/public/images/personal-museum.png');
+}
+ 
+
+.tong-quan {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  top:-120px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.cong-nghe {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  margin-bottom: auto;
+}
+
+.cong-nghe-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  width: 20%;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+
+}
+
+.cong-nghe-1 {
+  position: absolute;
+  top: 39.5%;
+  left: 5%;
+  width:90%;
+  height: 100%;
+  z-index: 1;
+
+}
+
+.info {
+  position: relative;
+  margin-top: 300px; 
+  
+  height: auto;
+  width:1200px;
+  text-align: justify;
+  justify-content: center;
+  font-size: large;
+  margin-left: auto;
+  margin-bottom: 100px;
+ 
+}
+
+/* Hiệu ứng fade cho mỗi trang khi điều hướng */
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
+
+.info {
+  position: relative;
+  width: 100%;
+  margin-top: 400px;
+  margin-bottom: 50px;
+}
+
+/* ----- Responsive cho Tablet và Mobile ----- */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.hamburger {
+  display: none; /* Ẩn hamburger mặc định */
+}
+
+/* Responsive mobile */
+@media (max-width: 768px) {
+  .signin-page-box, .signup-page-box {
+    width: 95vw;
+    max-width: 99vw;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+  }
+
+  .hamburger {
+    display: block;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    z-index: 1100;
+    margin-left: 5px;
+  }
+
+  
+  .nav-menu {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: black;
+    flex-direction: column;
+    width: 200px;
+    padding: 10px;
+    display: none;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+  
+  .signin{
+    margin: auto;
+    left: 5px;
+  }
+  
+.tinh-nang-chinh{
+  margin-top:50px;
+}
+  .feature-grid {
+    grid-template-columns: 1fr; /* 1 cột trên điện thoại */
+  
+    margin-left: 0;
+  }
+
+  .feature-card {
+    width: 100%; /* Đảm bảo mỗi thẻ chiếm hết chiều rộng màn hình */
+    padding: 60px; /* Giảm padding để tiết kiệm không gian */
+    height: 100%;
+  }
+  
+  .cong-nghe-1{
+    width: 100%;
+    height: auto;
+  }
+
+  .info{
+    margin: 0;
+  }
+}
