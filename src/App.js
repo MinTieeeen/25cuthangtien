@@ -24,6 +24,7 @@ import PersonalMuseum from './pages/PersonalMuseum';
 import Introduction from './pages/Thongnhat/Introduction';
 import TankGame2 from './pages/Thongnhat/TankGame2';
 import NarratorScreen from './pages/Thongnhat/NarratorScreen';
+import AoDaiIntro from './pages/AoDaiWorkshop/AoDaiIntro';
   
 function App() {
   // const { loading } = useAuth();
@@ -67,6 +68,7 @@ function App() {
           <Route path="/donghogame" element={<DongHoGame />} />
            <Route path="/FlipCard" element={<FlipCard />} /> 
 
+          <Route path="/ao-dai-workshop" element={<AoDaiIntro />} />
 
 
            <Route path="/leaderboard" element={<LeaderboardPage />} /> 

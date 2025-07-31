@@ -1,0 +1,36 @@
+.ao-dai-intro-background {
+  background: url('../../assets/AoDaiWorkshop/aodai_background.png') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ao-dai-intro-content {
+  background: rgba(255,255,255,0.85);
+  padding: 40px 30px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 500px;
+}
+
+.ao-dai-image {
+  width: 180px;
+  margin-bottom: 20px;
+}
+
+.ao-dai-next-btn {
+  margin-top: 24px;
+  padding: 10px 32px;
+  background: #d72660;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.ao-dai-next-btn:hover {
+  background: #a51c47;
+} 
