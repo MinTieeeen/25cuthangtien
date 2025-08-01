@@ -25,7 +25,8 @@ import Introduction from './pages/Thongnhat/Introduction';
 import TankGame2 from './pages/Thongnhat/TankGame2';
 import NarratorScreen from './pages/Thongnhat/NarratorScreen';
 import AoDaiIntro from './pages/AoDaiWorkshop/AoDaiIntro';
-  
+import VirtualTryOnPage from './pages/AoDaiWorkshop/VirtualTryOnPage'; 
+
 function App() {
   // const { loading } = useAuth();
 
@@ -40,6 +41,8 @@ function App() {
         <Routes>
 
         <Route path="/" element={<HomePage />} />
+
+        <Route path="/virtualtryon" element={<VirtualTryOnPage />} />
         
         <Route path="/museum" element={<MuseumPage />} />
 
